@@ -543,6 +543,13 @@
 
                 var $target = $(event.target);
                 
+                if($('.ie8').length > 0){
+                    event.preventDefault();
+                    $target = $target.find("input");
+                    $target.prop("checked", !$target.prop("checked"));
+                    $target.click();
+                }
+                
                 if (event.shiftKey && this.options.multiple) {
                     if($target.is("label")){ // Handles checkbox selection manually (see https://github.com/davidstutz/bootstrap-multiselect/issues/431)
                         event.preventDefault();
